@@ -1,0 +1,19 @@
+"use strict";
+
+var async = require("async");
+
+
+console.log("Hola mundo asincrono");
+
+function escribeTrasDosSegundos(texto, callback) {
+    setTimeout(function () {
+        console.log(texto);
+        callback();
+    }, 2000);
+}
+
+var array = [1, 2, "tres", 4, 5, 6, 7, "ocho", 9, 10];
+
+async.eachSeries(array, escribeTrasDosSegundos, function () {
+    console.log("termina el programa asincrono");
+})
